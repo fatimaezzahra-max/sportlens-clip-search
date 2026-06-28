@@ -1,0 +1,9 @@
+backend/venv/
+backend/app/data/images/
+backend/app/data/checkpoints/
+backend/app/data/index/
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+*.pth

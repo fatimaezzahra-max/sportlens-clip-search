@@ -1,0 +1,64 @@
+:root {
+  --bg-void: #0a0d14;
+  --bg-surface: #131826;
+  --bg-surface-raised: #1a2032;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+
+  --text-primary: #f1f2f6;
+  --text-secondary: #9ca3b5;
+  --text-tertiary: #5d6478;
+
+  --accent-indigo: #6366f1;
+  --accent-indigo-bright: #818cf8;
+  --accent-coral: #ff6b5b;
+  --accent-coral-dim: rgba(255, 107, 91, 0.15);
+  --accent-mint: #34d399;
+  --accent-mint-dim: rgba(52, 211, 153, 0.15);
+
+  --gradient-signature: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ff6b5b 100%);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(255, 107, 91, 0.06), transparent);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0); }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0 8px;
+  }
+}
