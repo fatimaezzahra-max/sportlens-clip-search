@@ -1,9 +1,36 @@
-backend/venv/
-backend/app/data/images/
-backend/app/data/checkpoints/
-backend/app/data/index/
+# Environnements
+.venv/
+venv/
+env/
+.env
+*.env
+
+# Cache Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Données volumineuses (NON versionnées : voir README, section "Données et modèles")
+app/data/images/
+app/data/index/
+app/data/checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.index
+*.safetensors
+*.zip
+*.rar
+
+# On GARDE les métriques (petits JSON utilisés par le dashboard)
+!app/data/metrics/
+
+# Frontend
 frontend/node_modules/
 frontend/dist/
-__pycache__/
-*.pyc
-*.pth
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
