@@ -11,9 +11,9 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Données volumineuses (NON versionnées : voir README, section "Données et modèles")
-app/data/images/
-app/data/index/
-app/data/checkpoints/
+backend/app/data/images/
+backend/app/data/index/
+backend/app/data/checkpoints/
 *.pt
 *.pth
 *.ckpt
@@ -21,9 +21,6 @@ app/data/checkpoints/
 *.safetensors
 *.zip
 *.rar
-
-# On GARDE les métriques (petits JSON utilisés par le dashboard)
-!app/data/metrics/
 
 # Frontend
 frontend/node_modules/

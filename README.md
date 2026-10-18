@@ -71,23 +71,25 @@ Frontend React (Vite)  ──HTTP──►  API FastAPI
 
 ```
 .
-├── app/                       # Backend
-│   ├── main.py                # Routes FastAPI
-│   ├── config.py              # Chemins et paramètres
-│   ├── schemas.py             # Modèles Pydantic
-│   ├── models/
-│   │   ├── clip_model.py      # Encodage texte / image
-│   │   └── adapter_model.py   # Adaptateur de projection
-│   ├── indexing/faiss_index.py
-│   ├── search/search_engine.py
-│   └── data/                  # (non versionné, sauf metrics/)
-│       ├── images/
-│       ├── index/
-│       ├── checkpoints/
-│       └── metrics/
+├── backend/
+│   └── app/
+│       ├── main.py                # Routes FastAPI
+│       ├── config.py              # Chemins et paramètres
+│       ├── schemas.py             # Modèles Pydantic
+│       ├── models/
+│       │   ├── clip_model.py      # Encodage texte / image
+│       │   └── adapter_model.py   # Adaptateur de projection
+│       ├── indexing/faiss_index.py
+│       ├── search/search_engine.py
+│       └── data/                  # (non versionné, sauf metrics/)
+│           ├── images/
+│           ├── index/
+│           ├── checkpoints/
+│           └── metrics/
 ├── frontend/                  # Interface React
 │   └── src/components/        # SearchBar, ComparatorView, MetricsDashboard
-├── notebooks/                 # Entraînement et évaluation
+├── notebooks/
+│   └── clip-fine-tuning-sport.ipynb   # Fine-tuning et évaluation
 ├── requirements.txt
 └── README.md
 ```
@@ -98,9 +100,9 @@ Les fichiers volumineux ne sont pas dans ce dépôt :
 
 | Élément | Chemin attendu | Où le trouver |
 |---|---|---|
-| Images Flickr30k (sous-ensemble) | `app/data/images/` | Jeu Flickr30k, à télécharger séparément (licence recherche) |
-| Checkpoint fine-tuné | `app/data/checkpoints/adapter_v3_best.pt` | ✏️ *lien à ajouter (Hugging Face / Drive)* |
-| Index FAISS | `app/data/index/*.index` et `*_id_to_path.json` | ✏️ *lien à ajouter, ou à régénérer via le notebook* |
+| Images Flickr30k (sous-ensemble) | `backend/app/data/images/` | Jeu Flickr30k, à télécharger séparément (licence recherche) |
+| Checkpoint fine-tuné | `backend/app/data/checkpoints/adapter_v3_best.pt` | ✏️ *lien à ajouter (Hugging Face / Drive)* |
+| Index FAISS | `backend/app/data/index/*.index` et `*_id_to_path.json` | ✏️ *lien à ajouter, ou à régénérer via le notebook* |
 
 Sans ces fichiers, l'API démarre mais `/status` indique les moteurs comme non prêts.
 
@@ -108,13 +110,14 @@ Sans ces fichiers, l'API démarre mais `/status` indique les moteurs comme non p
 
 **Prérequis** : Python 3.10+, Node.js 18+.
 
-### Backend (depuis la racine du projet)
+### Backend
 
 ```bash
 python -m venv .venv
 # Windows : .venv\Scripts\activate      Linux/Mac : source .venv/bin/activate
 pip install -r requirements.txt
 
+cd backend
 uvicorn app.main:app --reload --port 8000
 ```
 Vérifier : http://localhost:8000/status et http://localhost:8000/docs
